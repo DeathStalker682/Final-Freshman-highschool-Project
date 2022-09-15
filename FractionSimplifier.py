@@ -43,4 +43,10 @@ while True:
     
     print(numerator, "/", denominator, " Is the simplest form of ",half1, "/", half2, sep = "")
     
+#Repeat program
+  again = input(" Play again? (Y/N)")
+  if again[0].upper() == "N":
+    break 
+    
 #Version 1.1: Made input fraction prompt repeat until a correect input was used. 
+#Version 1.2: Made while true loop breakable.
