@@ -5,37 +5,36 @@
 #Location: Beaverton High School, Oregon
 
 
-#Finding Characters
+#finding characters
 def characters():
-  print("LETTERS:")
-  alpha = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+{}[];:',.<>/?\|`~\""
+  text = "abcdefghijklmnopqrstuvwxyz1234567890!@#$%^&*()-_=+{}[];:',.<>/?\|`~\""
   
-  for ltr in range(len(alpha)):
-      if alpha[ltr] in text:
-        print(alpha[ltr], ":", sep = "", end = "")
+  for ltr in range(len(text)):
+      if text[ltr] in usertext:
+        print(text[ltr], ":", sep = "", end = "")
       if alpha[ltr] in text:
         for i in range(count[alpha[ltr]]):
           print("*", end = " ")
         print()
   return ""
 
-
 #-------------------------------------------------------
 
 from collections import Counter
 
 while True:
-  print("Enter some text and this program will create a histogram showing how many characters of each type you used.", end = " ")
+  print("Enter some text and this program will count how many characters of each type you used.", end = " ")
   
   #User input
-  text = input().lower()
-  while (len(text)) > 200:
+  usertext = input().lower()
+  while (len(usertext)) > 200:
     print("Please enter 200 or less characters", end = " ")
     text = input().lower()
 
   print("\n")
 #counts characters in text
-  count = Counter(text)
+  count = Counter(usertext)
+  
   
   print(characters())
 
@@ -44,4 +43,4 @@ while True:
   if again[0].upper() == "N":
     break 
     
-#Ver. 1.1: Shortened the progrm to one funtion.
+#Ver. 1.1: Shortened the progrm to one funtion and changed variables. 
