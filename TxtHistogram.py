@@ -5,10 +5,10 @@
 #Location: Beaverton High School, Oregon
 
 
-#finding letters
-def letters():
+#Finding Characters
+def characters():
   print("LETTERS:")
-  alpha = "abcdefghijklmnopqrstuvwxyz"
+  alpha = "abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+{}[];:',.<>/?\|`~\""
   
   for ltr in range(len(alpha)):
       if alpha[ltr] in text:
@@ -19,35 +19,6 @@ def letters():
         print()
   return ""
 
-  
-#finding numbers
-def number():
-  print("NUMBERS:")
-  numbers = "0123456789"
-  
-  for num in range(len(numbers)):
-    if numbers[num] in text:
-      print(numbers[num], ":", sep = "", end = "")
-    if numbers[num] in text:  
-      for i in range(count[numbers[num]]):
-        print("*", end = " ")
-      print()
-  return ""
-
-
-#finding special characters
-def special():
-  print("SPECIAL CHARACTERS:")
-  other = "!@#$%^&*()-_=+{}[];:',.<>/?\|`~\""
-  
-  for char in range(len(other)):
-    if other[char] in text:
-      print(other[char], ":", sep = "", end = "")
-    if other[char] in text:
-      for i in range(count[other[char]]):
-        print("*", end = " ")
-      print()
-  return ""
 
 #-------------------------------------------------------
 
@@ -66,12 +37,11 @@ while True:
 #counts characters in text
   count = Counter(text)
   
-  
-  print(letters())
-  print(number())
-  print(special())
+  print(characters())
 
 #Repeat program
   again = input(" Graph Again? (Y/N)")
   if again[0].upper() == "N":
     break 
+    
+#Ver. 1.1: Shortened the progrm to one funtion.
