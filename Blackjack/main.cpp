@@ -1,3 +1,9 @@
+// Name: Card Game
+// Author: Owen Maguire
+// Date: 1/12/23
+// Desc: Play a game of Blackjack
+// Location: Beaverton high School, Oregon
+
 #include <iostream>
 #include "card.h"
 #include "deck.h"
@@ -8,10 +14,16 @@ int main() {
   deck one;
   hand player;
   hand house;
-  
-  std::string choice = " ";
 
-  // Deal two cards to each
+  int wins = 0; // W/L counter
+  int losses = 0;
+  
+  while(true) {
+
+  std::string again;
+  std::string choice = "";
+
+  // Deal two cards to each player
   player.get_card(one.deal());
   house.get_card(one.deal());
   std::cout << "\nDealer's hand:\t ## ";
@@ -31,7 +43,7 @@ int main() {
     break;} // Break if player wins
     std::cout << "Hit: {1} | Stand: {2}\n"
               << "Please enter your choice: ";
-    getline(std::cin, choice);
+    std::cin >> choice;
     if(choice[0] == '1') {
       player.get_card(one.deal());
     }
@@ -55,13 +67,26 @@ int main() {
   }// End Dealer's Turn
     }
   // Win/Lose Text
-  if(player.total() > house.total() and player.total() <= 21){ std::cout << "\n\nYou Win!";}
+  if(player.total() > house.total() and player.total() <= 21){ std::cout << "\n\nYou Win!"; wins += 1;} //increment w/l counter
   else if(house.total() > 21){
-  std::cout << "\n\nYou Win!";}
+  std::cout << "\n\nYou Win!"; wins += 1;}
   else if(player.total() == house.total())
     std::cout << "\n\nYou Tied!";
-  else{std::cout << "\n\nYou Lose!";} //  End Win/Lose Text 
+  else{std::cout << "\n\nYou Lose!"; losses += 1;} //  End Win/Lose Text 
 
-  return 0;
+  std::cout << "\n\nWins: " << wins;
+  std::cout << "\nLosses: " << losses << "\n\n";
+    
+  //Repeat program
+std::cout << "Play Again? (Y/N)";
+std::cin >> again;
+again = toupper(again[0]);
+if (again.compare("N") == 0) {
+  return 0; }
 
+player.reset(); //reset hands if play again
+house.reset();
+
+    }//end while true
+  }//End Main
   }//End Main
